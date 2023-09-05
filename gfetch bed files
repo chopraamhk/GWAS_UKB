@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+#SBATCH --job-name="ukb_data"
+#SBATCH -o ukb_data.o%j
+#SBATCH -e ukb_data.e%j
+#SBATCH --mail-user=m.chopra1@universityofgalway.ie
+#SBATCH --mail-type=ALL
+#SBATCH --partition="highmem","normal","MSC","gpu"
+
+#datasets download to /data3 instead of the default /home
+TFDS_DATA_DIR=/data3/mchopra/ukb_genotypic_files
+
+#code -> This will download bed file from chr. 2 to 27
+for i in {2..27}; do
+   ./gfetch 22418 -ak74519r673490.key -c"$i"
+done
+
