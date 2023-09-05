@@ -8,3 +8,6 @@ Merge all the chromosome files to one file using plink
 
 #STEP3:
 PLINK QC
+
+#STEP4:
+GWAS ANALYSIS
