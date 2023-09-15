@@ -20,6 +20,8 @@ required repositories: PLINK
 conda install -c bioconda plink2
 ```
 
+UKBB DATA -> <https://biobank.ctsu.ox.ac.uk/crystal/label.cgi?id=263>
+
 #Working with genopic files -> Less variants
 Step1:
 Download genotypic calls .bim, .bed, .fam files
