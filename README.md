@@ -37,6 +37,7 @@ sinfo extract_keep.sh
 
 #Working with Imputed data -> More variants
 Need imputed data instead of genotypic calls as the axiom data has less than 1 million variants. In contrast, the Imputed data uses haplotype data from 1KG, UK10K, and HRC (haplotype data from ~80,000 samples) giving ~90 million variants in the imputed dataset.
+
 Step1:
 ```
 sinfo imputed.sh
