@@ -1,5 +1,4 @@
 # ukb_GWAS
-
 #installation of miniconda::
 ```
 mkdir -p ~/miniconda3
@@ -8,7 +7,7 @@ bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
 ```
 
-After installing, initialize your newly-installed Miniconda. The following commands initialize for bash and zsh shells:
+After you install it, you can just initialize your newly-installed Miniconda. The following commands initialize for bash and zsh shells:
 
 ```
 ~/miniconda3/bin/conda init bash
@@ -59,12 +58,36 @@ sinfo bgenToPlink.sh
 
 #Step3
 Extract only 54,725 samples with imaging phenotype with available Genotypic data.
+```
+sbatch extract_keep.sh
+```
 
 #STEP3:
-PLINK QC
+PLINK QC and LD pruning 
+```
+sbatch 1.qc.sh ##output of this step will be used in the next step
+sbatch 2.ld_prune.sh ##ld_pruning 
+```
 
 #STEP4:
-Merge all the chromosome files to one file using plink 
+Merging and PCA
+Merge all the chromosome files into one file and run PCA 
 
-#STEP4:
-GWAS ANALYSIS
+#STEP5:
+Making GRM
+
+#STEP6:
+Creating sparse GRM for fastGWA
+
+#STEP7:
+covar files
+
+#STEP8:
+GCTA fastGWA
+
+##further if want to do the PRS analysis 
+- polygenic score calculation
+- phenotype and LOCO PGS covars
+- FastGWAS PGS adjusted
+
+##Reference : <https://github.com/declan93/PGS-LMM>
