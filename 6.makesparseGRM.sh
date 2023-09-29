@@ -1,8 +1,8 @@
 #!/bin/sh
 #SBATCH --job-name="SparseGRM"
 #SBATCH --mail-user=<>
-#SBATCH -o ld_prune.o%j
-#SBATCH -e ld_prune.e%j
+#SBATCH -o sparsegrm.o%j
+#SBATCH -e sparsegrm.e%j
 #SBATCH -n 64
 #SBATCH -N 4
 #SBATCH --partition="normal"
