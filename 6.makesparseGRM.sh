@@ -1,6 +1,6 @@
 #!/bin/sh
 #SBATCH --job-name="SparseGRM"
-#SBATCH --mail-user=m.chopra1@universityofgalway.ie
+#SBATCH --mail-user=<>
 #SBATCH -o ld_prune.o%j
 #SBATCH -e ld_prune.e%j
 #SBATCH -n 64
