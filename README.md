@@ -72,18 +72,33 @@ sbatch 2.ld_prune.sh ##ld_pruning
 #STEP4:
 Merging and PCA
 Merge all the chromosome files into one file and run PCA 
+```
+sbatch 3.pca.sh
+```
 
 #STEP5:
 Making GRM
+```
+sbatch 4.GCTA.sh
+```
 
 #STEP6:
 Creating sparse GRM for fastGWA
+```
+sbatch 5.makesparseGRM.sh
+```
 
 #STEP7:
 covar files
+```
+sbatch 6.covar.sh
+```
 
 #STEP8:
 GCTA fastGWA
+```
+sbatch 7.fastGWA.sh
+```
 
 ##further if want to do the PRS analysis 
 - polygenic score calculation
