@@ -91,13 +91,13 @@ sbatch 5.makesparseGRM.sh
 #STEP7:
 covar files
 ```
-sbatch 6.covar.sh
+sbatch 7.covar.sh
 ```
 
 #STEP8:
 GCTA fastGWA
 ```
-sbatch 7.fastGWA.sh
+sbatch 8.fastGWA.sh
 ```
 
 ##further if want to do the PRS analysis 
@@ -106,3 +106,37 @@ sbatch 7.fastGWA.sh
 - FastGWAS PGS adjusted
 
 ##Reference : <https://github.com/declan93/PGS-LMM>
+
+In Covariates, need to consider following points.. After the aortic segmentation, stahe 1 exclusion of phenotypic/genotypic data:
+Stage 1 exclusions:
+```
+• 19 aortic diagnoses (ICD 10 and
+self-reported)
+• 707 grade IV or greater
+hypertension at imaging visit
+• 349 extremes of BMI (<16 or >40)
+• 551 outlying aortic phenotype
+values (>4SDs from mean, which
+gives a cut off for AA diameter
+around 45mm).
+• 930 without genotyped data or fail
+genotype QC
+• 62 fail heterozygosity/missingness
+• 25 sex mismatch
+• 823 individuals without height data
+```
+
+Stage 2 exclusions:
+```
+restrict to Caucasian individuals
+(“White”, “British”, “Irish”, “Any other
+white background”)
+```
+
+```
+excluded data for distensibility calculation, i.e., PWA
+```
+
+```
+In the paper, GWAS has been performed with Areas and distensibility
+```
