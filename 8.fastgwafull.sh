@@ -8,4 +8,13 @@
 #SBATCH --mail-user=m.chopra1@universityofgalway.ie
 #SBATCH --mail-type=ALL
 
-./gcta-1.94.1 --mbfile fastGWASfiles  --grm-sparse /data3/mchopra/ukb_genotype_mri_passed/output/makesparseGRM/sp_grm --fastGWA-mlm --pheno /data3/mchopra/ukb_genotype_mri_passed/phenotypes/pheno_aao.txt --qcovar ../makeCovar/qcovars.txt --covar ../makeCovar/fixed.txt --threads 64 --out /data3/mchopra/ukb_genotype_mri_passed/output/results/Stats_aao.orig
+#excluding values having sd > 4 from mean. 
+data <- raed.table(".txt", h = T)
+column_data <- data$column_name
+mean_value <- mean(column_data)
+std_dev <- sd(column_data)
+filtered_data <- subset(data, column_name >= mean_value - 4 * std_dev & column_name <= mean_value + 4 * std_dev)
+write.csv(filtered_data, file = "filtered_data.csv", row.names = FALSE)
+
+#run gwas
+./gcta-1.94.1 --mbfile fastGWASfiles  --grm-sparse /data3/mchopra/ukb_genotype_mri_passed/output/makesparseGRM/sp_grm --fastGWA-mlm --pheno /data3/mchopra/ukb_genotype_mri_passed/phenotypes/filtered_data.csv --qcovar ../makeCovar/qcovars.txt --covar ../makeCovar/fixed.txt --threads 64 --out /data3/mchopra/ukb_genotype_mri_passed/output/results/Stats_aao.orig
