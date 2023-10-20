@@ -2,15 +2,15 @@
 #SBATCH --job-name="1FastGWA"
 #SBATCH -o fastgwa.o%j
 #SBATCH -e fastgwa.e%j
-#SBATCH -n 50
-#SBATCH -N 1
-#SBATCH -p gpu
+#SBATCH -n 64
+#SBATCH -N 2
+#SBATCH -p highmem
 #SBATCH --mail-user=m.chopra1@universityofgalway.ie
 #SBATCH --mail-type=ALL
 
 #excluding values having sd > 4 from mean. 
 R
-data <- read.table(".txt", h = T)
+data <- read.table(".txt", h = T) #.txt is the file where FID IID trait1 is there separated by tab delimited. 
 column_data <- data$column_name
 mean_value <- mean(column_data)
 std_dev <- sd(column_data)
