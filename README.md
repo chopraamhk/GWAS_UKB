@@ -138,5 +138,5 @@ excluded data for distensibility calculation, i.e., PWA
 ```
 
 ```
-In the paper, GWAS has been performed with Areas and distensibility
+In the paper, GWAS has been performed with Areas and distensibility. The genetic model was adjusted for age at the time of imaging, sex, mean arterial pressure, height, and weight.
 ```
