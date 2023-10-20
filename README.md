@@ -110,17 +110,11 @@ sbatch 8.fastGWA.sh
 In Covariates, need to consider following points.. After the aortic segmentation, stahe 1 exclusion of phenotypic/genotypic data:
 Stage 1 exclusions:
 ```
-• 19 aortic diagnoses (ICD 10 and
-self-reported)
-• 707 grade IV or greater
-hypertension at imaging visit
+• 19 aortic diagnoses (ICD 10 and self-reported)
+• 707 grade IV or greater hypertension at imaging visit
 • 349 extremes of BMI (<16 or >40)
-• 551 outlying aortic phenotype
-values (>4SDs from mean, which
-gives a cut off for AA diameter
-around 45mm).
-• 930 without genotyped data or fail
-genotype QC
+• 551 outlying aortic phenotype values (>4SDs from mean, which gives a cut off for AA diameter around 45mm).
+• 930 without genotyped data or fail genotype QC
 • 62 fail heterozygosity/missingness
 • 25 sex mismatch
 • 823 individuals without height data
