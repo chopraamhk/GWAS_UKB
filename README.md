@@ -96,6 +96,7 @@ sbatch 7.covar.sh
 
 #STEP8:
 GCTA fastGWA
+Before running the fastGWA, i recommend checking the normality of the phenotypes and running the inverse normal distribution 
 ```
 sbatch 8.fastGWA.sh
 ```
