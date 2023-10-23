@@ -134,3 +134,16 @@ excluded data for distensibility calculation, i.e., PWA
 ```
 In the paper, GWAS has been performed with Areas and distensibility. The genetic model was adjusted for age at the time of imaging, sex, mean arterial pressure, height, and weight.
 ```
+
+```
+lambda = round(median((qnorm(gwasResults$P / 2) ) ^2 ) / 0.454, 3)
+It can be used to assess whether there is any genomic inflation in your GWAS results. In a well-conducted GWAS with no systematic bias, you would expect the lambda value to be close to 1.0.
+
+Lambda ≈ 1.0: This is ideal and suggests that there is no significant genomic inflation. Your test statistics are not overly influenced by factors like population structure or other biases.
+
+Lambda < 1.0: A lambda value less than 1.0 can indicate that the test statistics are deflated. This could be due to factors like overcorrection for population structure or other biases.
+
+Lambda > 1.0: A lambda value greater than 1.0 can indicate that the test statistics are inflated. This could be due to population structure, cryptic relatedness, or other sources of bias in your analysis.
+```
+
+
