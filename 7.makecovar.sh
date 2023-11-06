@@ -9,6 +9,15 @@ data <- read.table("21001.txt", h =T)
 filtered_data <- data[data$Mean_21001 > 15 & data$Mean_21001 < 40, ]
 write.table(filtered_data, file = "filtered_21001.txt", sep = "\t", row.names = FALSE)
 
+#4079.txt - Diastolic pressure #keeping only the value under 100 that means excluding the diastolic pressure
+data1 <- read.table("4079.txt", h =T)
+filtered_data <- data1[data1$mean < 100, ]
+write.table(filtered_data, file = "filtered_4079.txt", sep = "\t", row.names = FALSE)
+
+#4080.txt - Systolic pressure #keeping only the value under 160 that means excluding the systolic pressure
+data2 <- read.table("4080.txt", h =T)
+filtered_data <- data2[data2$mean < 160, ]
+write.table(filtered_data, file = "filtered_4080.txt", sep = "\t", row.names = FALSE)
 
 ##continuous covariates
 # hash age file using ID as key and covar as val. print evectors with age covar appended. 
