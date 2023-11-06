@@ -2,6 +2,14 @@
 ##need to add more covariates here
 #!/bin/bash
 
+#21001.txt ##bmi excluding values >=16 or <=40 
+#have calculated the mean of values and excluded the empty values)
+R
+data <- read.table("21001.txt", h =T)
+filtered_data <- data[data$Mean_21001 > 15 & data$Mean_21001 < 40, ]
+write.table(filtered_data, file = "filtered_21001.txt", sep = "\t", row.names = FALSE)
+
+
 ##continuous covariates
 # hash age file using ID as key and covar as val. print evectors with age covar appended. 
 awk 'NR==FNR{a[$1]=$2;next}{print $0,a[$1] ? a[$1] : "NA"}' ../../phenotypes/age.txt.csv ../../output/PCA/pca.eigenvec > qcovars2.txt ##age
