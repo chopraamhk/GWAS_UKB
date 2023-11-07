@@ -1,8 +1,6 @@
-##refer declan's pipeline first while using this 
-##need to add more covariates here
 #!/bin/bash
 
-#21001.txt ##bmi excluding values >=16 or <=40 
+#21001.txt ##bmi excluding values >15 or < 40 
 #have calculated the mean of values and excluded the empty values)
 R
 data <- read.table("21001.txt", h =T)
