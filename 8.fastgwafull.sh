@@ -18,5 +18,8 @@ filtered_data <- subset(data, column_name >= mean_value - 4 * std_dev & column_n
 write.csv(filtered_data, file = "filtered_data.csv", row.names = FALSE)
 q()
 
+#Also, the phenotypes should be normalised 
+normalised script :- <https://rpubs.com/chopraamhk/1103403>
+
 #run gwas
 ./gcta-1.94.1 --mbfile fastGWASfiles  --grm-sparse /data3/mchopra/ukb_genotype_mri_passed/output/makesparseGRM/sp_grm --fastGWA-mlm --pheno /data3/mchopra/ukb_genotype_mri_passed/phenotypes/filtered_data.csv --qcovar ../makeCovar/qcovars.txt --covar ../makeCovar/fixed.txt --threads 64 --out /data3/mchopra/ukb_genotype_mri_passed/output/results/Stats_aao.orig
