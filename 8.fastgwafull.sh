@@ -19,7 +19,11 @@ write.csv(filtered_data, file = "filtered_data.csv", row.names = FALSE)
 q()
 
 #Also, the phenotypes should be normalised 
-normalised script :- <https://rpubs.com/chopraamhk/1103403>
+normalised script :- < https://rpubs.com/chopraamhk/1103403 >
 
-#run gwas
-./gcta-1.94.1 --mbfile fastGWASfiles  --grm-sparse /data3/mchopra/ukb_genotype_mri_passed/output/makesparseGRM/sp_grm --fastGWA-mlm --pheno /data3/mchopra/ukb_genotype_mri_passed/phenotypes/filtered_data.csv --qcovar ../makeCovar/qcovars.txt --covar ../makeCovar/fixed.txt --threads 64 --out /data3/mchopra/ukb_genotype_mri_passed/output/results/Stats_aao.orig
+#run gwas for AAo
+../gcta-1.94.1 --mbfile fastGWASfiles  --grm-sparse /home/mchopra/data3/ukb_genotype_mri_passed/output/after_pca_wbi/makesparseGRM/sp_grm --fastGWA-mlm --pheno ../../../phenotypes/norm_pheno_aao.txt --qcovar ../makeCovar/qcovars7.txt --covar ../makeCovar/fixed.txt --threads 64 --out ../results/Stats_wbi_aao.orig
+
+
+#run gwas for DAo
+../gcta-1.94.1 --mbfile fastGWASfiles  --grm-sparse /home/mchopra/data3/ukb_genotype_mri_passed/output/after_pca_wbi/makesparseGRM/sp_grm --fastGWA-mlm --pheno ../../../phenotypes/norm_pheno_dao.txt --qcovar ../makeCovar/qcovars7.txt --covar ../makeCovar/fixed.txt --threads 64 --out ../results/Stats_wbi_dao.orig
