@@ -6,6 +6,9 @@
 #SBATCH -N 2
 #SBATCH -p highmem
 
+module load Anaconda3
+conda activate bcf_env
+
 #split the stat file in 22 chromosome files
 for i in {1..22}; do 
 	cat Stats_wbi_aao.orig.fastGWA | awk -v chr="$i" '$1 != chr {print $0}' | ${BGZIP} -c > prsStat/prsStat_aao_${i}.gz; 
