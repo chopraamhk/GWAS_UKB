@@ -2,24 +2,19 @@
 #SBATCH --job-name="PGS_dao"
 #SBATCH --output PGSLOCO_dao.o%j
 #SBATCH -e PGSLOCO_dao.e%j
-#SBATCH -n 64
-#SBATCH -N 2
+#SBATCH -n 32
+#SBATCH -N 1
 #SBATCH -p highmem
+#SBATCH --array=1-22
 
-module load Anaconda3
-conda activate bcf_env
+# Generate LOCO PGS scores for aao
+./PRSice_linux --thread 64 --base ../results/prsStat/prsStat_aao_${SLURM_ARRAY_TASK_ID}.gz --chr CHR --A1 A1 --A2 A2 --stat BETA --snp SNP --bp POS --pvalue P --target ../wbi_icd10/wbi_removedICD10 --pheno-file ../../../phenotypes/norm_pheno_aao.txt --all-score --fastscore --bar-levels 5e-05 --pheno-col AAo_distensibility --score avg --out PGS_aao.${SLURM_ARRAY_TASK_ID} --clump-p 5e-05
 
-#split the stat file in 22 chromosome files
-for i in {1..22}; do 
-	cat Stats_wbi_aao.orig.fastGWA | awk -v chr="$i" '$1 != chr {print $0}' | ${BGZIP} -c > prsStat/prsStat_aao_${i}.gz; 
-done
+# Generate LOCO PGS scores for dao
+./PRSice_linux --thread 64 --base ../results/prsStat/prsStat_dao_${SLURM_ARRAY_TASK_ID}.gz --chr CHR --A1 A1 --A2 A2 --stat BETA --snp SNP --bp POS --pvalue P --target ../wbi_icd10/wbi_removedICD10 --pheno-file ../../../phenotypes/norm_pheno_dao.txt --all-score --fastscore --bar-levels 5e-05 --pheno-col DAo_distensibility --score avg --out PGS_dao.${SLURM_ARRAY_TASK_ID} --clump-p 5e-05
 
-for i in {1..22}; do
-        cat Stats_wbi_dao.orig.fastGWA | awk -v chr="$i" '$1 != chr {print $0}' | ${BGZIP} -c > prsStat/prsStat_dao_${i}.gz;                                     
-done
+# Generate LOCO PGS scores for dao
 
-# Generate LOCO PGS scores
-./PRSice_linux --thread 64 --base ../results/Stats_wbi_dao.orig.fastGWA --chr CHR --A1 A1 --A2 A2 --stat BETA --snp SNP --bp POS --pvalue P --target ../wbi_icd10/wbi_removedICD10 --pheno-file ../../../phenotypes/norm_pheno_dao.txt --all-score --fastscore --bar-levels 5e-05 --pheno-col DAo_distensibility --score avg --out PGS_dao.wbi --clump-p 5e-05
 
 # LDpred code for prediction
 # Rscript LDpred2.R ${TRAIT} ${results}/prsStat_${SLURM_ARRAY_TASK_ID}.gz ${SLURM_ARRAY_TASK_ID}
