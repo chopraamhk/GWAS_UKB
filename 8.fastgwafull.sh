@@ -27,3 +27,16 @@ normalised script :- < https://rpubs.com/chopraamhk/1103403 >
 
 #run gwas for DAo
 ../gcta-1.94.1 --mbfile fastGWASfiles  --grm-sparse /home/mchopra/data3/ukb_genotype_mri_passed/output/after_pca_wbi/makesparseGRM/sp_grm --fastGWA-mlm --pheno ../../../phenotypes/norm_pheno_dao.txt --qcovar ../makeCovar/qcovars7.txt --covar ../makeCovar/fixed.txt --threads 64 --out ../results/Stats_wbi_dao.orig
+
+##for the next PGS steps--
+module load Anaconda3
+conda activate bcf_env
+
+#split the stat file in 22 chromosome files
+for i in {1..22}; do 
+	cat Stats_wbi_aao.orig.fastGWA | awk -v chr="$i" '$1 != chr {print $0}' | bgzip -c > prsStat/prsStat_aao_${i}.gz; 
+done
+
+for i in {1..22}; do
+        cat Stats_wbi_dao.orig.fastGWA | awk -v chr="$i" '$1 != chr {print $0}' | bgzip -c > prsStat/prsStat_dao_${i}.gz;                                     
+done
