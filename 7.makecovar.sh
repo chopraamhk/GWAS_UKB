@@ -25,7 +25,7 @@ awk 'NR==FNR{a[$1]=$2;next}{print $0,a[$1] ? a[$1] : "NA"}' ../../phenotypes/50.
 awk 'NR==FNR{a[$1]=$2;next}{print $0,a[$1] ? a[$1] : "NA"}' ../../phenotypes/23098.txt qcovars3.txt > qcovars4.txt #weight 
 awk 'NR==FNR{a[$1]=$2;next}{print $0,a[$1] ? a[$1] : "NA"}' ../../phenotypes/21001.txt qcovars4.txt > qcovars5.txt #BMI
 awk 'NR==FNR{a[$1]=$2;next}{print $0,a[$1] ? a[$1] : "NA"}' ../../phenotypes/4079.txt qcovars5.txt > qcovars6.txt #Diastolic BP
-awk 'NR==FNR{a[$1]=$2;next}{print $0,a[$1] ? a[$1] : "NA"}' ../../phenotypes/4089.txt qcovars6.txt > qcovars7.txt #Systolic BP
+awk 'NR==FNR{a[$1]=$2;next}{print $0,a[$1] ? a[$1] : "NA"}' ../../phenotypes/4080.txt qcovars6.txt > qcovars7.txt #Systolic BP
 
 var="FID IID PC1 PC2 PC3 PC4 PC5 PC6 PC7 PC8 PC9 PC10 age batch height weight BMI DBP SBP"
 sed -i "1s/.*/$var/" qcovars7.txt
