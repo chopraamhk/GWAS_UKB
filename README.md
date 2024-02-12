@@ -147,4 +147,6 @@ Lambda < 1.0: A lambda value less than 1.0 can indicate that the test statistics
 Lambda > 1.0: A lambda value greater than 1.0 can indicate that the test statistics are inflated. This could be due to population structure, cryptic relatedness, or other sources of bias in your analysis.
 ```
 
-
+```
+Tutorial PRS -> <https://choishingwan.github.io/PRS-Tutorial/>
+```
