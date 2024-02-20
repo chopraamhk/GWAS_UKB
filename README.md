@@ -151,7 +151,7 @@ Lambda > 1.0: A lambda value greater than 1.0 can indicate that the test statist
 Tutorial PRS -> <https://choishingwan.github.io/PRS-Tutorial/>
 ```
 
-#Post-GWAS
+# Post-GWAS
 
 Step 1: Create a conda env: conda create -n crossmap python=3 pip3 install Crossmap pip3 install Crossmap --upgrade
 
@@ -193,3 +193,5 @@ Download liftover file from https://hgdownload.soe.ucsc.edu/goldenPath/hg19/lift
 ```
 module load singularity singularity shell -B ../../../data3/mchopra/ /data/containers/depot.galaxyproject.org-singularity-bcftools-1.16--hfe4b78e_1.img bcftools view -i'ID=@snps_list_ao.txt' GTEx_chr_PosID.vcf > output.vcf OR bcftools filter --include 'ID=@MySNPs.list' .phased.vcf.gz > output.vcf
 ```
+
+# Later, do the regression analysis
