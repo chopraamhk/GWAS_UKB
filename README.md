@@ -150,3 +150,46 @@ Lambda > 1.0: A lambda value greater than 1.0 can indicate that the test statist
 ```
 Tutorial PRS -> <https://choishingwan.github.io/PRS-Tutorial/>
 ```
+
+#Post-GWAS
+
+Step 1: Create a conda env: conda create -n crossmap python=3 pip3 install Crossmap pip3 install Crossmap --upgrade
+
+Step 2: Run the crossmap to convert from GRCh37 to GRCh38 (following : https://crossmap.sourceforge.net/) CrossMap bed hg19ToHg38.over.chain.gz input_crossmap_ao.bed output.bed
+
+myfile.bed looks like (rename .txt to .bed) chr start_pos end_pos 1 2560 2560 ##if end position is not there then you can add end position same
+```
+awk '{print "chr" $1, $3, $3}' abi_ao_snps.txt > input_crossmap_ao.txt and remove header after that.
+```
+Download liftover file from  https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/ 
+```
+wget https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz
+```
+##i have also changed the id in vcf file to chr_position using plink2
+
+```
+plink2  --set-missing-var-ids @:# --vcf GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.SHAPEIT2_phased.vcf --out outputfile
+ ```
+#To extract the variants from GTEx file 
+#GTEx file is in hg38 and ukb variants are in hg37. Use crossmap to liftover the variants. 
+```
+module load singularity singularity shell -B ../../../data3/mchopra/ /data/containers/depot.galaxyproject.org-singularity-bcftools-1.16--hfe4b78e_1.img bcftools view -i'ID=@snps_list_ao.txt' GTEx_chr_PosID.vcf > output.vcf OR bcftools filter --include 'ID=@MySNPs.list' .phased.vcf.gz > output.vcf
+```
+
+Step 2: Run the crossmap to convert from GRCh37 to GRCh38 (following : https://crossmap.sourceforge.net/) CrossMap bed 
+```
+hg19ToHg38.over.chain.gz input_crossmap_ao.bed output.bed
+```
+myfile.bed looks like (rename .txt to .bed) chr start_pos end_pos 1 2560 2560 ##if end position is not there then you can add the end position same
+
+```
+awk '{print "chr" $1, $3, $3}' abi_ao_snps.txt > input_crossmap_ao.txt
+```
+and remove the header after that.
+
+Download liftover file from https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/ wget https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz
+
+##i have also changed the id in vcf file to chr_position using plink2
+```
+module load singularity singularity shell -B ../../../data3/mchopra/ /data/containers/depot.galaxyproject.org-singularity-bcftools-1.16--hfe4b78e_1.img bcftools view -i'ID=@snps_list_ao.txt' GTEx_chr_PosID.vcf > output.vcf OR bcftools filter --include 'ID=@MySNPs.list' .phased.vcf.gz > output.vcf
+```
