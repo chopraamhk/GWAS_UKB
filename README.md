@@ -195,3 +195,8 @@ module load singularity singularity shell -B ../../../data3/mchopra/ /data/conta
 ```
 
 # Later, do the regression analysis
+
+
+[if need to use crossmap on vcf files: 
+CrossMap.py vcf hg38ToHg19.over.chain.gz GTEx_chr_posID.vcf Homo_sapiens.GRCh37.dna.primary_assembly.fa  output.vcf 
+]
