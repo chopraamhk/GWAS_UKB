@@ -1,3 +1,6 @@
+##major studies i have focused on -> https://www.nature.com/articles/s41467-022-32219-x
+https://www.nature.com/articles/s41588-021-00962-4
+
 # ukb_GWAS
 #installation of miniconda::
 ```
