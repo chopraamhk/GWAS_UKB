@@ -4,7 +4,6 @@ https://www.nature.com/articles/s41598-021-99031-3
 ##major studies i have focused on -> https://www.nature.com/articles/s41467-022-32219-x
 https://www.nature.com/articles/s41588-021-00962-4
 
-# ukb_GWAS
 #installation of miniconda::
 ```
 mkdir -p ~/miniconda3
