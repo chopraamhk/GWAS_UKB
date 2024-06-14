@@ -5,14 +5,14 @@
 mkdir -p results
 
 # Run lmm on all chromosomes to generate summ statistics to be used by bolt
-bolt --bfile=Brit/plink \
-        --phenoFile=height/height.pheno \
-        --phenoCol=height \
+bolt --bfile=Brit/plink \      
+        --phenoFile=height/height.pheno \  
+        --phenoCol=height \  
         --geneticMapFile=/home/dbennett/bin/BOLT-LMM/tables/genetic_map_hg19_withX.txt.gz \
         --LDscoresFile=/home/dbennett/bin/BOLT-LMM/tables/LDSCORE.1000G_EUR.tab.gz \
         --numThreads 32 \
         --covarMaxLevels=200 \
-        --statsFile=height/results/Stats.height.GRM \
+        --statsFile=height/results/Stats.height.GRM \ 
         --qCovarCol=PC{1:10} \
         --covarCol=centre \
         --qCovarCol=batch \
