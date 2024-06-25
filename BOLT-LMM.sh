@@ -4,11 +4,9 @@
 #SBATCH --mail-type=ALL
 #SBATCH -o bolt_m.o%j
 #SBATCH -e bolt_m.e%j
-#SBATCH -n 16
-#SBATCH -N 1
 #SBATCH --partition="normal","highmem"
 
-# Run lmm on all chromosomes to generate summ statistics to be used by bolt
+# Run lmm on all chromosomes to generate sum statistics to be used by bolt
 ../../../../BOLT-LMM_v2.4.1/bolt --bed=/data3/mchopra/ukb_genotype_mri_passed/output/wbi_removedICD10/c_{1:22}.bed \
         --bim=/data3/mchopra/ukb_genotype_mri_passed/output/wbi_removedICD10/c_{1:22}.bim \
         --fam=/data3/mchopra/ukb_genotype_mri_passed/output/wbi_removedICD10/c_1.fam \
@@ -20,7 +18,7 @@
         --covarMaxLevels=200 \
         --statsFile=results/ao_GRM_with_imputed \
         --qCovarCol=PC{1:10} \
-        --covarCol=CENTRE \
+        --qCovarCol=CENTRE \
         --qCovarCol=BATCH \
         --qCovarCol=AGE \
         --covarCol=SEX \
@@ -30,15 +28,15 @@
         --qCovarCol=DBP \
         --qCovarCol=SBP \
         --covarFile=bolt_covars.txt \
-        --bgenFile=/data/UKB/mehak/bgen/{1:22}.bgen \
+        --bgenFile=/data4/UKB/Genotypes/Imputed/bgen/chr{1:22}.bgen \
+        --remove=in.plink_but_not_bgen.sample \
+        --noBgenIDcheck \
         --statsFileBgenSnps=results/ao_Stats.imputed.bgen \
         --bgenMinMAF=1e-4 \
         --bgenMinINFO=0.4 \
-        --sampleFile=/data/UKB/mehak/bgen/1.sample \
+        --sampleFile=/data4/UKB/Genotypes/Imputed/bgen/chr1.sample \
         --LDscoresMatchBp \
         --lmmForceNonInf \
         --verboseStats \
-        --remove bolt.in_plink_but_not_imputed.FID_IID.47674.txt \
-        --noBgenIDcheck \
         --covarUseMissingIndic \
         --maxModelSnps 4000000
