@@ -5,10 +5,11 @@
 #SBATCH -o bolt_m.o%j
 #SBATCH -e bolt_m.e%j
 #SBATCH --partition="normal","highmem"
+#SBATCH -a 1-22
 
 # Run lmm on all chromosomes to generate sum statistics to be used by bolt
-../../../../BOLT-LMM_v2.4.1/bolt --bed=/data3/mchopra/ukb_genotype_mri_passed/output/wbi_removedICD10/c_{1:22}.bed \
-        --bim=/data3/mchopra/ukb_genotype_mri_passed/output/wbi_removedICD10/c_{1:22}.bim \
+../../../../BOLT-LMM_v2.4.1/bolt --bed=/data3/mchopra/ukb_genotype_mri_passed/output/wbi_removedICD10/c_${SLURM_ARRAY_TASK_ID}.bed \
+        --bim=/data3/mchopra/ukb_genotype_mri_passed/output/wbi_removedICD10/c_${SLURM_ARRAY_TASK_ID}.bim \
         --fam=/data3/mchopra/ukb_genotype_mri_passed/output/wbi_removedICD10/c_1.fam \
         --phenoFile=/data3/mchopra/ukb_genotype_mri_passed/phenotypes/norm_pheno_aao.txt \
         --phenoCol=AAo_distensibility \
@@ -28,7 +29,7 @@
         --qCovarCol=DBP \
         --qCovarCol=SBP \
         --covarFile=bolt_covars.txt \
-        --bgenFile=/data4/UKB/Genotypes/Imputed/bgen/chr{1:22}.bgen \
+        --bgenFile=/data4/UKB/Genotypes/Imputed/bgen/chr${SLURM_ARRAY_TASK_ID}.bgen \
         --remove=in.plink_but_not_bgen.sample \
         --noBgenIDcheck \
         --statsFileBgenSnps=results/ao_Stats.imputed.bgen \
